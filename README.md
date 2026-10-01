@@ -5,7 +5,7 @@
 1. Apellidos, Nombre
 1. Osuna de Alba, Alejandro
 1. Sanchez Corujo, Ivan
-1. Apellidos, Nombre
+1. Utrera Nieto, Leo
 
 ## 1. Introducción al problema
 
