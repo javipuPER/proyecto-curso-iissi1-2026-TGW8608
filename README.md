@@ -2,10 +2,10 @@
 
 ## Miembros del grupo LX-XXX-X (sustituir)
 
-1. Apellidos, Nombre
-1. Osuna de Alba, Alejandro
-1. Sanchez Corujo, Ivan
-1. Utrera Nieto, Leo
+1. Pérez Ulgar, Francisco Javier
+2. Osuna de Alba, Alejandro
+3. Sanchez Corujo, Ivan
+4. Utrera Nieto, Leo
 
 ## 1. Introducción al problema
 
