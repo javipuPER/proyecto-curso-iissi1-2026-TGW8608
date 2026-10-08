@@ -11,70 +11,54 @@
 
 # 1. Introducción al problema
 
-El proyecto consiste en el desarrollo de un sistema de información para la gestión integral de una clínica médica privada.
+El proyecto consiste en el desarrollo de un sistema de información para la gestión de una clínica médica.
 
-Actualmente, la clínica necesita gestionar una gran cantidad de información relacionada con sus pacientes, empleados, médicos, especialidades, citas, consultas, diagnósticos, recetas, medicamentos, departamentos, servicios, pruebas médicas y habitaciones.
+El cliente del sistema es una clínica que necesita organizar y centralizar la información relacionada con las personas que forman parte de ella, sus empleados, los médicos, los departamentos, los pacientes, las citas, las consultas, las recetas y los medicamentos.
 
-La información se encuentra habitualmente repartida entre diferentes medios de almacenamiento, como documentos, hojas de cálculo o aplicaciones independientes. Esta situación dificulta el acceso centralizado a la información y puede provocar problemas como:
+La clínica necesita disponer de una forma estructurada de gestionar la información de sus pacientes y profesionales sanitarios, así como de las distintas actividades médicas que se realizan.
 
-- Duplicidad de información de pacientes y empleados.
-- Dificultad para consultar el historial de un paciente.
-- Errores en la gestión de citas.
-- Problemas para controlar qué médico atiende a cada paciente.
-- Dificultad para consultar diagnósticos y patologías.
-- Falta de control sobre las recetas y medicamentos prescritos.
-- Dificultad para gestionar los servicios y pruebas disponibles.
-- Falta de información centralizada sobre las habitaciones disponibles.
+Entre los principales problemas que se pretenden solucionar se encuentran:
 
-El cliente del sistema es la propia clínica, que necesita disponer de una base de datos centralizada que permita almacenar y consultar toda esta información de manera estructurada.
+- La dificultad para mantener organizada la información de pacientes y empleados.
+- La dificultad para gestionar las citas de los pacientes.
+- La posibilidad de producir errores al asignar citas a médicos.
+- La dificultad para consultar las consultas realizadas a un paciente.
+- La necesidad de mantener información sobre las recetas y los medicamentos prescritos.
+- La falta de una estructura centralizada para relacionar empleados con departamentos.
 
-Los principales usuarios del sistema serán el personal administrativo de la clínica y el personal sanitario.
+El sistema permitirá centralizar esta información y facilitar su consulta y mantenimiento.
 
-El sistema deberá permitir mantener la información actualizada y facilitar las tareas de gestión diaria de la clínica.
+Los principales usuarios del sistema serán el personal administrativo de la clínica y los médicos.
 
-El alcance inicial del proyecto contempla una única clínica, por lo que no es necesario almacenar información sobre distintas clínicas o centros.
+El personal administrativo será responsable principalmente de la gestión de pacientes, empleados, departamentos y citas.
+
+Los médicos utilizarán el sistema para consultar la información de los pacientes y registrar las consultas y recetas correspondientes.
 
 ---
 
 # 2. Glosario de términos
 
-Los términos utilizados en el dominio del problema son los siguientes, ordenados alfabéticamente:
-
 **Cita:** Reserva de una fecha y hora para que un paciente sea atendido por un médico.
 
-**Consulta:** Acto médico realizado por un médico a un paciente en el contexto de una cita.
+**Consulta:** Atención médica realizada por un médico a un paciente en el contexto de una cita.
 
-**Contacto:** Medio mediante el cual se puede contactar con una persona, como un teléfono, un correo electrónico o una dirección.
-
-**Departamento:** Unidad organizativa de la clínica a la que pertenecen los empleados y que ofrece determinados servicios.
-
-**Diagnóstico:** Resultado de la evaluación médica realizada sobre un paciente durante una consulta.
+**Departamento:** Unidad organizativa de la clínica a la que pertenece un empleado.
 
 **Empleado:** Persona que trabaja para la clínica.
 
-**Especialidad:** Área de conocimiento médico en la que está especializado un médico.
+**Estado de cita:** Situación en la que se encuentra una cita. Puede ser pendiente, confirmada o cancelada.
 
-**Estado de la cita:** Situación en la que se encuentra una cita, por ejemplo pendiente, confirmada o cancelada.
+**Forma farmacéutica:** Forma en la que se presenta un medicamento, como comprimido, cápsula, jarabe o inyectable.
 
-**Estado de habitación:** Situación actual de una habitación, pudiendo estar libre, ocupada, en limpieza o en mantenimiento.
+**Medicamento:** Producto que puede ser incluido en una receta médica.
 
-**Forma farmacéutica:** Presentación de un medicamento, como comprimido, cápsula, jarabe o inyectable.
-
-**Habitación:** Espacio de la clínica destinado a la hospitalización o alojamiento temporal de pacientes.
-
-**Medicamento:** Producto farmacéutico que puede ser prescrito por un médico.
-
-**Médico:** Profesional sanitario encargado de atender a los pacientes y realizar consultas y diagnósticos.
+**Médico:** Empleado de la clínica encargado de atender a los pacientes y realizar consultas.
 
 **Paciente:** Persona que recibe atención médica en la clínica.
 
-**Patología:** Enfermedad o afección médica que puede ser diagnosticada en un paciente.
+**Persona:** Individuo cuyos datos personales son gestionados por el sistema.
 
-**Prueba:** Prueba o procedimiento médico que puede formar parte de los servicios ofrecidos por la clínica.
-
-**Receta:** Prescripción realizada por un médico como resultado de una consulta.
-
-**Servicio:** Servicio sanitario ofrecido por un departamento de la clínica.
+**Receta:** Prescripción médica que contiene uno o varios medicamentos.
 
 ---
 
@@ -82,66 +66,45 @@ Los términos utilizados en el dominio del problema son los siguientes, ordenado
 
 ## 3.1. Requisitos generales
 
-El sistema deberá permitir gestionar de forma centralizada la información de la clínica.
+El sistema permitirá gestionar de forma centralizada la información necesaria para el funcionamiento de la clínica.
 
-Los principales requisitos generales del sistema son:
+Los principales requisitos generales son:
 
-1. Gestionar la información personal de pacientes y empleados.
-2. Gestionar diferentes medios de contacto asociados a las personas.
-3. Gestionar los departamentos de la clínica.
-4. Gestionar los empleados pertenecientes a cada departamento.
-5. Gestionar la información de los médicos y sus especialidades.
-6. Gestionar las citas de los pacientes.
-7. Registrar las consultas realizadas por los médicos.
-8. Registrar diagnósticos y patologías.
-9. Gestionar las recetas y los medicamentos prescritos.
-10. Gestionar los servicios y pruebas médicas disponibles.
-11. Gestionar las habitaciones de la clínica.
-12. Mantener la integridad y coherencia de la información almacenada.
-
-El sistema estará orientado principalmente a operaciones de consulta, alta, modificación y baja de información, así como al registro de las actividades médicas realizadas.
+1. Gestionar la información de las personas, pacientes y empleados.
+2. Gestionar los departamentos y los empleados pertenecientes a ellos.
+3. Gestionar los médicos de la clínica.
+4. Gestionar las citas de los pacientes con los médicos.
+5. Registrar las consultas realizadas por los médicos.
+6. Registrar las recetas generadas durante las consultas.
+7. Gestionar los medicamentos incluidos en las recetas.
+8. Mantener la coherencia e integridad de la información.
 
 ## 3.2. Usuarios del sistema
 
 ### Personal administrativo
 
-Responsable de la gestión administrativa de la clínica.
+El personal administrativo será responsable de las tareas de gestión de la clínica.
 
 Podrá gestionar:
 
+- Personas.
 - Pacientes.
-- Citas.
-- Contactos.
 - Empleados.
 - Departamentos.
-- Servicios.
-- Habitaciones.
+- Médicos.
+- Citas.
 
 ### Médico
 
-Responsable de la atención sanitaria de los pacientes.
+El médico será el usuario encargado de las tareas relacionadas con la atención sanitaria.
 
 Podrá:
 
-- Consultar información de pacientes.
-- Gestionar consultas.
-- Registrar diagnósticos.
-- Registrar patologías diagnosticadas.
-- Emitir recetas.
+- Consultar pacientes.
+- Consultar sus citas.
+- Registrar consultas.
+- Generar recetas.
 - Consultar medicamentos.
-- Consultar sus citas y especialidades.
-
-### Responsable de la clínica
-
-Usuario encargado de tareas de supervisión y administración general.
-
-Podrá consultar y gestionar:
-
-- Empleados.
-- Departamentos.
-- Servicios.
-- Habitaciones.
-- Relaciones de supervisión entre empleados.
 
 ---
 
@@ -149,137 +112,105 @@ Podrá consultar y gestionar:
 
 ## 4.1. Requisitos funcionales
 
-### R.F.01. Gestionar pacientes
+### R.F.01. Gestionar personas
 
-Como personal administrativo quiero registrar y actualizar pacientes para mantener actualizada la información de las personas atendidas por la clínica.
+Como personal administrativo quiero registrar y actualizar los datos de las personas para mantener correctamente identificados a pacientes y empleados.
 
 **Prueba de aceptación**
 
-- Se debe poder registrar un nuevo paciente.
-- Se debe poder modificar sus datos personales.
-- Se debe poder consultar la información de un paciente.
-- El paciente debe quedar asociado a una persona existente.
+- Se debe poder registrar una persona.
+- Se deben poder modificar sus datos personales.
+- Se debe poder consultar la información almacenada de una persona.
+- No podrá existir más de una persona con el mismo DNI.
 - Se debe aplicar la regla de negocio R.N.01.
 
-### R.F.02. Gestionar contactos
+### R.F.02. Gestionar pacientes
 
-Como personal administrativo quiero registrar los datos de contacto de una persona para poder localizarla mediante diferentes medios.
+Como personal administrativo quiero registrar pacientes para poder gestionar su atención médica.
 
 **Prueba de aceptación**
 
-- Se debe poder registrar un contacto.
-- Se debe indicar el tipo de contacto.
-- Se debe almacenar su valor.
-- Una persona puede tener varios contactos.
+- Se debe poder registrar un paciente asociado a una persona.
+- Se debe poder consultar la información del paciente.
+- Se debe poder modificar la información del paciente.
+- El paciente debe poder tener una o varias citas.
 - Se debe aplicar la regla de negocio R.N.02.
 
 ### R.F.03. Gestionar empleados y departamentos
 
-Como responsable de la clínica quiero gestionar empleados y departamentos para mantener organizada la estructura de la clínica.
+Como personal administrativo quiero gestionar empleados y departamentos para mantener organizada la estructura de la clínica.
 
 **Prueba de aceptación**
 
 - Se debe poder registrar un empleado.
-- Cada empleado debe pertenecer a un departamento.
-- Se debe poder consultar los empleados de un departamento.
-- Se debe poder consultar la información de cada departamento.
+- Se debe poder registrar un departamento.
+- Cada empleado deberá pertenecer a un departamento.
+- Se deberán poder consultar los empleados pertenecientes a un departamento.
 - Se debe aplicar la regla de negocio R.N.03.
 
-### R.F.04. Gestionar médicos y especialidades
+### R.F.04. Gestionar médicos
 
-Como responsable de la clínica quiero registrar las especialidades de los médicos para conocer las áreas médicas que puede cubrir cada profesional.
+Como personal administrativo quiero gestionar los médicos para poder asignarlos a las citas de los pacientes.
 
 **Prueba de aceptación**
 
 - Se debe poder registrar un médico.
-- Se debe poder asociar un médico con una o varias especialidades.
-- Se debe poder consultar los médicos de una especialidad.
+- El médico deberá estar asociado a un empleado.
+- Se podrá consultar la información de un médico.
+- Se podrán consultar las citas asignadas a un médico.
 - Se debe aplicar la regla de negocio R.N.04.
 
 ### R.F.05. Gestionar citas
 
-Como personal administrativo quiero registrar y gestionar citas para organizar la atención de los pacientes.
+Como personal administrativo quiero gestionar las citas para organizar la atención de los pacientes.
 
 **Prueba de aceptación**
 
 - Se debe poder crear una cita.
-- La cita debe indicar paciente, médico, fecha y hora.
-- Se debe poder modificar el estado de una cita.
-- Se debe poder cancelar una cita.
-- Se debe evitar que un médico tenga dos citas simultáneas.
+- La cita debe estar asociada a un paciente.
+- La cita debe estar asociada a un médico.
+- Se debe almacenar su fecha y hora.
+- Se debe poder modificar su estado.
+- No se permitirá que un médico tenga dos citas simultáneas.
 - Se debe aplicar la regla de negocio R.N.05.
 
 ### R.F.06. Registrar consultas
 
-Como médico quiero registrar las consultas realizadas a los pacientes para mantener constancia de la atención médica.
+Como médico quiero registrar las consultas realizadas para mantener un historial de la atención médica de los pacientes.
 
 **Prueba de aceptación**
 
-- Una consulta debe estar relacionada con un paciente y un médico.
+- Una consulta debe estar asociada a una cita.
 - Se debe almacenar la fecha y hora de la consulta.
-- Se deben poder almacenar observaciones.
-- Una cita atendida puede generar una consulta.
+- Se deberán poder almacenar las observaciones.
+- Se deberá poder registrar el diagnóstico mediante el atributo correspondiente de la consulta.
+- Una consulta deberá ser realizada por un médico.
 - Se debe aplicar la regla de negocio R.N.06.
 
-### R.F.07. Registrar diagnósticos
+### R.F.07. Gestionar recetas
 
-Como médico quiero registrar diagnósticos durante una consulta para mantener el historial médico del paciente.
+Como médico quiero generar recetas durante una consulta para registrar los medicamentos indicados al paciente.
 
 **Prueba de aceptación**
 
-- Una consulta puede tener uno o varios diagnósticos.
-- Cada diagnóstico debe corresponder a una patología.
-- Se debe poder almacenar la fecha del diagnóstico.
-- Se debe poder consultar el diagnóstico de un paciente.
+- Una receta debe estar asociada a una consulta.
+- Se debe almacenar la fecha de la receta.
+- Se podrán almacenar observaciones.
+- Una receta deberá incluir al menos un medicamento.
 - Se debe aplicar la regla de negocio R.N.07.
 
-### R.F.08. Gestionar recetas y medicamentos
+### R.F.08. Gestionar medicamentos
 
-Como médico quiero emitir recetas con uno o varios medicamentos para establecer el tratamiento de un paciente.
-
-**Prueba de aceptación**
-
-- Una consulta puede generar una o varias recetas.
-- Una receta debe contener al menos un medicamento.
-- Debe registrarse la dosis para cada medicamento prescrito.
-- Debe registrarse la frecuencia de administración.
-- Debe poder registrarse la duración del tratamiento.
-- Se debe aplicar la regla de negocio R.N.08.
-
-### R.F.09. Gestionar servicios y pruebas
-
-Como responsable de la clínica quiero gestionar los servicios y pruebas ofrecidos para mantener actualizado el catálogo de prestaciones de la clínica.
+Como médico quiero consultar los medicamentos disponibles para poder incluirlos en las recetas.
 
 **Prueba de aceptación**
 
-- Se debe poder registrar un servicio.
-- Un departamento debe poder ofrecer uno o varios servicios.
-- Un servicio puede incluir una o varias pruebas.
-- Se debe poder consultar las pruebas incluidas en un servicio.
-- Se debe aplicar la regla de negocio R.N.09.
-
-### R.F.10. Gestionar habitaciones
-
-Como personal administrativo quiero gestionar las habitaciones para conocer su disponibilidad y características.
-
-**Prueba de aceptación**
-
-- Se debe poder registrar una habitación.
-- Se debe indicar su número, tipo y estado.
-- Se debe poder consultar si una habitación está disponible.
-- El precio por día debe depender del tipo de habitación.
-- Se debe aplicar la regla de negocio R.N.10.
-
-### R.F.11. Gestionar supervisión de empleados
-
-Como responsable de la clínica quiero registrar qué empleados supervisan a otros para mantener la estructura jerárquica de la organización.
-
-**Prueba de aceptación**
-
-- Un empleado puede supervisar a varios empleados.
-- Un empleado puede tener como máximo un supervisor.
-- Un empleado no puede supervisarse a sí mismo.
-- Se debe aplicar la regla de negocio R.N.11.
+- Se debe poder registrar un medicamento.
+- Se debe poder consultar un medicamento.
+- Se debe almacenar su nombre.
+- Se debe almacenar su forma farmacéutica.
+- Se deberá poder utilizar un mismo medicamento en distintas recetas.
+- La forma farmacéutica deberá pertenecer al tipo enumerado FormaFarmacia.
 
 ---
 
@@ -287,181 +218,146 @@ Como responsable de la clínica quiero registrar qué empleados supervisan a otr
 
 ### R.I.01. Información de personas
 
-Como usuario autorizado quiero almacenar los datos personales de las personas para identificar correctamente a pacientes y empleados.
+Como usuario autorizado quiero almacenar los datos personales de una persona para identificarla correctamente.
 
 **Prueba de aceptación**
 
-- Se almacenará el identificador de la persona.
-- Se almacenarán nombre, apellidos, DNI y fecha de nacimiento.
-- El DNI identificará unívocamente a una persona.
+- Se almacenará un identificador.
+- Se almacenarán nombre y apellidos.
+- Se almacenará el DNI.
+- Se almacenará la fecha de nacimiento.
+- El DNI será único.
 
 ### R.I.02. Información de pacientes
 
-Como usuario autorizado quiero almacenar la información específica de los pacientes para gestionar su atención médica.
+Como usuario autorizado quiero almacenar la información específica de los pacientes para gestionar su atención.
 
 **Prueba de aceptación**
 
 - Se almacenará el identificador del paciente.
 - Se almacenará el número de historia clínica.
-- Se podrán almacenar alergias y observaciones.
-- Se registrará si el paciente necesita habitación.
+- Se podrán almacenar alergias.
+- Se podrán almacenar observaciones.
 
-### R.I.03. Información de contactos
+### R.I.03. Información de empleados
 
-Como usuario autorizado quiero almacenar diferentes medios de contacto para poder comunicarse con una persona.
-
-**Prueba de aceptación**
-
-- Un contacto tendrá un tipo.
-- Un contacto tendrá un valor.
-- Una persona podrá tener varios contactos.
-- Se podrá identificar un contacto principal.
-
-### R.I.04. Información de empleados
-
-Como responsable de la clínica quiero almacenar la información laboral de los empleados para gestionar la plantilla.
+Como usuario autorizado quiero almacenar la información de los empleados para gestionar la plantilla de la clínica.
 
 **Prueba de aceptación**
 
+- Se almacenará el identificador del empleado.
 - Se almacenará la fecha de alta.
 - Se almacenará el salario.
-- Se almacenará el estado laboral.
-- Cada empleado pertenecerá a un departamento.
+- Se almacenará su estado.
+- Se conocerá el departamento al que pertenece.
 
-### R.I.05. Información de departamentos
+### R.I.04. Información de departamentos
 
-Como responsable de la clínica quiero almacenar los departamentos para representar la organización interna.
+Como usuario autorizado quiero almacenar los departamentos para representar la organización de la clínica.
 
 **Prueba de aceptación**
 
 - Cada departamento tendrá un identificador.
-- Cada departamento tendrá nombre y descripción.
+- Cada departamento tendrá un nombre.
+- Cada departamento podrá tener una descripción.
 
-### R.I.06. Información de servicios y pruebas
+### R.I.05. Información de médicos
 
-Como responsable de la clínica quiero almacenar los servicios y pruebas disponibles para conocer la oferta sanitaria de la clínica.
-
-**Prueba de aceptación**
-
-- Cada servicio tendrá nombre, descripción y precio.
-- Cada prueba tendrá nombre, descripción, precio y tipo.
-- Se podrán asociar pruebas a servicios.
-
-### R.I.07. Información de médicos y especialidades
-
-Como usuario autorizado quiero conocer las especialidades de cada médico para poder gestionar correctamente las citas.
+Como usuario autorizado quiero almacenar la información de los médicos para conocer los profesionales que atienden a los pacientes.
 
 **Prueba de aceptación**
 
-- Cada médico tendrá un número de colegiado.
-- Un médico podrá tener una o varias especialidades.
-- Una especialidad podrá corresponder a varios médicos.
+- Cada médico tendrá un identificador.
+- Se almacenará su número de colegiado.
+- Se almacenará la información necesaria para identificarlo.
 
-### R.I.08. Información de citas
+### R.I.06. Información de citas
 
-Como usuario autorizado quiero almacenar las citas para poder conocer cuándo será atendido cada paciente.
-
-**Prueba de aceptación**
-
-- Cada cita tendrá fecha y hora.
-- Cada cita tendrá un estado.
-- Se podrá almacenar un motivo y observaciones.
-- Cada cita estará asociada a un paciente y un médico.
-
-### R.I.09. Información de consultas y diagnósticos
-
-Como médico quiero almacenar las consultas y diagnósticos realizados para mantener el historial médico del paciente.
+Como usuario autorizado quiero almacenar las citas para conocer cuándo y con qué médico será atendido cada paciente.
 
 **Prueba de aceptación**
 
-- Una consulta almacenará fecha y hora.
-- Una consulta podrá contener observaciones.
-- Cada diagnóstico tendrá una descripción y una fecha.
-- Cada diagnóstico estará relacionado con una patología.
-
-### R.I.10. Información de recetas y medicamentos
-
-Como médico quiero almacenar las recetas y medicamentos prescritos para conocer los tratamientos indicados.
-
-**Prueba de aceptación**
-
-- Cada receta tendrá una fecha.
+- Cada cita tendrá un identificador.
+- Se almacenará la fecha y hora.
+- Se almacenará su estado.
+- Se podrá almacenar el motivo.
 - Se podrán almacenar observaciones.
-- Cada medicamento tendrá nombre, forma farmacéutica y precio.
-- Para cada medicamento prescrito se almacenará la dosis, frecuencia y duración.
+- Cada cita estará asociada a un paciente y a un médico.
 
-### R.I.11. Información de habitaciones
+### R.I.07. Información de consultas
 
-Como usuario autorizado quiero almacenar la información de las habitaciones para controlar su disponibilidad.
-
-**Prueba de aceptación**
-
-- Cada habitación tendrá un número.
-- Cada habitación tendrá un tipo.
-- Cada habitación tendrá un estado.
-- El precio diario será derivado del tipo de habitación.
-
-### R.I.12. Información de supervisión
-
-Como responsable de la clínica quiero conocer las relaciones de supervisión entre empleados para representar la estructura jerárquica.
+Como médico quiero almacenar las consultas realizadas para mantener información de la atención proporcionada.
 
 **Prueba de aceptación**
 
-- Se podrá identificar al supervisor.
-- Se podrá identificar al empleado supervisado.
-- Un empleado podrá supervisar a varios empleados.
+- Cada consulta tendrá un identificador.
+- Se almacenará la fecha y hora.
+- Se almacenará el diagnóstico.
+- Se podrán almacenar observaciones.
+- La consulta estará asociada a una cita.
+
+### R.I.08. Información de recetas
+
+Como médico quiero almacenar las recetas para mantener un registro de las prescripciones realizadas.
+
+**Prueba de aceptación**
+
+- Cada receta tendrá un identificador.
+- Se almacenará la fecha.
+- Se podrán almacenar observaciones.
+- Cada receta estará asociada a una consulta.
+
+### R.I.09. Información de medicamentos
+
+Como usuario autorizado quiero almacenar los medicamentos para poder utilizarlos en las recetas.
+
+**Prueba de aceptación**
+
+- Cada medicamento tendrá un identificador.
+- Se almacenará su nombre.
+- Se almacenará su dosis.
+- Se almacenará su forma farmacéutica.
+- Se almacenará su precio.
 
 ---
 
 ## 4.1.2. Reglas de negocio
 
-### R.N.01. Identificación única de personas
+### R.N.01. DNI único
 
-No pueden existir dos personas con el mismo DNI.
+No pueden existir dos personas diferentes con el mismo DNI.
 
-### R.N.02. Contacto principal
+### R.N.02. Identificación del paciente
 
-Una persona podrá tener varios contactos, pero como máximo uno podrá estar marcado como contacto principal para cada tipo de contacto.
+Cada paciente debe corresponder a una única persona.
 
 ### R.N.03. Pertenencia a un departamento
 
-Todo empleado debe pertenecer a exactamente un departamento.
+Cada empleado debe pertenecer a un único departamento.
 
-### R.N.04. Especialidad médica
+### R.N.04. Médico como empleado
 
-Todo médico debe tener al menos una especialidad y una especialidad puede corresponder a varios médicos.
+Todo médico registrado en el sistema debe corresponder a un empleado de la clínica.
 
 ### R.N.05. Conflicto de citas
 
-Un médico no puede tener dos citas diferentes a la misma fecha y hora.
+Un médico no puede tener dos citas distintas a la misma fecha y hora.
 
-### R.N.06. Consulta asociada a cita
+### R.N.06. Consulta asociada a una cita
 
-Toda consulta registrada debe corresponder a una cita atendida.
+Toda consulta registrada debe estar asociada a una única cita.
 
-### R.N.07. Diagnóstico válido
+### R.N.07. Receta con medicamentos
 
-Todo diagnóstico debe estar asociado a una patología existente.
+Toda receta debe incluir al menos un medicamento.
 
-### R.N.08. Tratamiento completo
+### R.N.08. Estado de la cita
 
-Toda línea de receta debe contener una dosis, una frecuencia y una duración válidas.
+El estado de una cita solo puede tomar los valores definidos por el enumerado `EstadoCita`.
 
-### R.N.09. Servicios y pruebas
+### R.N.09. Forma farmacéutica
 
-Una prueba puede formar parte de varios servicios y puede existir independientemente de un servicio concreto.
-
-### R.N.10. Precio de habitación
-
-El precio diario de una habitación se obtiene a partir de su tipo de habitación y no se introduce manualmente.
-
-### R.N.11. Supervisión
-
-Un empleado puede supervisar a cero o más empleados, pero cada empleado podrá tener como máximo un supervisor. Un empleado no puede supervisarse a sí mismo.
-
-### R.N.12. Habitaciones
-
-Una habitación no puede estar asignada simultáneamente a dos pacientes diferentes.
+La forma farmacéutica de un medicamento solo puede tomar uno de los valores definidos por el enumerado `FormaFarmacia`.
 
 ---
 
@@ -472,26 +368,19 @@ Una habitación no puede estar asignada simultáneamente a dos pacientes diferen
 - HU01. Registrar persona.
 - HU02. Registrar paciente.
 - HU03. Registrar empleado.
-- HU04. Gestionar contactos.
+- HU04. Gestionar departamentos.
 
-### Épica 2. Gestión sanitaria
+### Épica 2. Gestión de citas y consultas
 
-- HU05. Gestionar médicos.
-- HU06. Gestionar especialidades.
-- HU07. Registrar consultas.
-- HU08. Registrar diagnósticos.
-- HU09. Gestionar patologías.
-- HU10. Emitir recetas.
-- HU11. Gestionar medicamentos.
+- HU05. Crear cita.
+- HU06. Modificar estado de cita.
+- HU07. Registrar consulta.
 
-### Épica 3. Gestión administrativa
+### Épica 3. Gestión de recetas
 
-- HU12. Gestionar citas.
-- HU13. Gestionar departamentos.
-- HU14. Gestionar servicios.
-- HU15. Gestionar pruebas.
-- HU16. Gestionar habitaciones.
-- HU17. Gestionar supervisión de empleados.
+- HU08. Crear receta.
+- HU09. Consultar medicamentos.
+- HU10. Añadir medicamentos a una receta.
 
 ---
 
@@ -499,19 +388,15 @@ Una habitación no puede estar asignada simultáneamente a dos pacientes diferen
 
 ### R.N.F.01. Seguridad
 
-Como usuario autorizado quiero acceder al sistema mediante mecanismos de autenticación y autorización para impedir el acceso de personas no autorizadas a la información de la clínica.
+Como usuario autorizado quiero que el sistema controle el acceso a la información para impedir que usuarios no autorizados consulten o modifiquen los datos de la clínica.
 
-### R.N.F.02. Rendimiento
+### R.N.F.02. Integridad
 
-Como usuario quiero que las operaciones habituales de consulta y modificación se realicen en un tiempo reducido para trabajar de forma eficiente.
+Como responsable de la clínica quiero que el sistema impida almacenar información incoherente para garantizar la integridad de los datos.
 
-### R.N.F.03. Integridad
+### R.N.F.03. Usabilidad
 
-Como responsable de la clínica quiero que el sistema impida introducir información incoherente para mantener la calidad de los datos almacenados.
-
-### R.N.F.04. Disponibilidad
-
-Como usuario quiero que el sistema esté disponible durante el horario habitual de funcionamiento de la clínica para poder realizar las tareas de gestión.
+Como usuario quiero que las operaciones habituales del sistema sean sencillas de realizar para poder gestionar la información de la clínica de forma eficiente.
 
 -- fin entregable 1 --
 
@@ -519,162 +404,60 @@ Como usuario quiero que el sistema esté disponible durante el horario habitual 
 
 ## 5.1. Diagramas de clases UML
 
-El modelo conceptual se ha desarrollado mediante un diagrama de clases UML.
+El modelo conceptual se representa mediante un diagrama de clases UML.
 
-El modelo contiene las siguientes entidades principales:
+Las clases entidad que forman parte del modelo son:
 
-- Persona
-- Paciente
-- Empleado
-- Contacto
-- Departamento
-- Servicio
-- Prueba
-- Médico
-- Especialidad
-- Cita
-- Consulta
-- Diagnóstico
-- Patología
-- Receta
-- Medicamento
-- Línea de receta
-- Habitación
-
-También se utilizan los tipos enumerados:
-
-- EstadoCita
-- TipoContacto
-- TipoPrueba
-- FormaFarmaceutica
-- TipoHabitacion
-- EstadoHabitacion
-
-El modelo incorpora asociaciones con multiplicidades, generalizaciones, composiciones, agregaciones, una asociación recursiva y una clase asociación.
-
-![Modelo conceptual UML](./Modelado%20conceptual1.drawio.png)
-
-### Generalización
-
-La clase `Persona` se especializa en:
-
+- `Persona`
 - `Paciente`
 - `Empleado`
+- `Medico`
+- `Departamento`
+- `Cita`
+- `Consulta`
+- `Receta`
+- `Medicamento`
 
-Esta clasificación es:
+Además, se utilizan los siguientes tipos enumerados:
 
-`{incompleta, solapada}`
+- `EstadoCita`
+- `FormaFarmacia`
 
-Una persona puede no ser ni paciente ni empleado y, además, una misma persona puede desempeñar ambos roles.
+### Generalización Persona
 
-### Composición
+La clase `Persona` se especializa en `Paciente` y `Empleado`.
 
-Se utilizan composiciones en aquellas relaciones en las que la parte depende de la existencia del todo.
+Esta relación permite representar que tanto los pacientes como los empleados son personas.
 
-Ejemplos:
+La clasificación se considera incompleta, ya que una persona puede existir sin ser paciente ni empleado.
 
-- Persona ◆── Contacto
-- Cita ◆── Consulta
-- Consulta ◆── Receta
+La clasificación se considera solapada, ya que una persona podría desempeñar simultáneamente los roles de paciente y empleado.
 
-### Agregación
+### Relaciones principales
 
-Se utiliza agregación cuando la parte puede existir independientemente del agregado.
+`Empleado` trabaja en un `Departamento`.
 
-Ejemplo:
+Un `Paciente` solicita o tiene `Cita`.
 
-- Servicio ◇── Prueba
+Una `Cita` es atendida por un `Medico`.
 
-Una prueba puede existir independientemente de un servicio y puede utilizarse en más de un servicio.
+Una `Cita` puede generar una `Consulta`.
 
-### Clase asociación
+Una `Consulta` es realizada por un `Medico`.
 
-La relación entre `Receta` y `Medicamento` utiliza la clase asociación `LineaReceta`, ya que existen datos que dependen de una prescripción concreta:
+Una `Consulta` puede generar una o varias `Recetas`.
 
-- dosis
-- frecuencia
-- duración
-- indicaciones
+Una `Receta` contiene uno o varios `Medicamentos`.
 
-### Asociación recursiva
+Las asociaciones del modelo incluirán las multiplicidades correspondientes.
 
-Los empleados pueden supervisar a otros empleados:
+### Tipos enumerados
 
-`Empleado (supervisor) ── supervisa ── Empleado (supervisado)`
+#### EstadoCita
 
-### Restricciones
-
-El modelo incluye restricciones que no pueden expresarse únicamente mediante relaciones gráficas, entre ellas:
-
-- Un médico no puede tener dos citas simultáneas.
-- Una persona no puede tener dos contactos principales del mismo tipo.
-- Un empleado puede tener como máximo un supervisor.
-- Un empleado no puede supervisarse a sí mismo.
-- Una habitación no puede estar ocupada simultáneamente por dos pacientes.
-- El precio diario de una habitación depende de su tipo.
-
----
-
-## 5.2. Escenarios de prueba
-
-### Escenario 1. Paciente solicita una cita y es atendido
-
-Un paciente llamado Laura García está registrado en el sistema.
-
-La paciente solicita una cita con el médico Carlos López, especialista en Cardiología.
-
-La cita queda registrada con estado `CONFIRMADA`.
-
-Posteriormente la paciente acude a la clínica y la cita pasa al estado `ATENDIDA`.
-
-El médico registra una consulta asociada a dicha cita, indicando la fecha y hora y unas observaciones.
-
-Durante la consulta se registra un diagnóstico de una patología previamente existente.
-
-La consulta genera además una receta con dos medicamentos.
-
-Para cada medicamento se registra una línea de receta con su dosis, frecuencia y duración.
-
-Este escenario permite comprobar:
-
-- Persona
-- Paciente
-- Médico
-- Especialidad
-- Cita
-- Consulta
-- Diagnóstico
-- Patología
-- Receta
-- Medicamento
-- LíneaReceta
-
-### Escenario 2. Gestión de una habitación
-
-El paciente necesita hospitalización.
-
-El sistema consulta las habitaciones disponibles y localiza una habitación individual en estado `LIBRE`.
-
-La habitación se asigna al paciente.
-
-El estado de la habitación pasa a `OCUPADA`.
-
-El precio diario de la habitación se obtiene automáticamente a partir del tipo `INDIVIDUAL`.
-
-Cuando el paciente abandona la habitación, su estado pasa nuevamente a `LIBRE`.
-
-### Diagrama de objetos UML
-
-Para validar el escenario 1 se utilizará un diagrama de objetos UML mostrando, por ejemplo:
+Los posibles valores son:
 
 ```text
-lauraGarcia : Paciente
-carlosLopez : Medico
-cardiologia : Especialidad
-cita101 : Cita
-consulta101 : Consulta
-diagnostico101 : Diagnostico
-hipertension : Patologia
-receta101 : Receta
-linea1 : LineaReceta
-medicamento1 : Medicamento
+PENDIENTE
+CONFIRMADA
+CANCELADA
