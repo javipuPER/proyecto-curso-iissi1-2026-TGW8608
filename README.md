@@ -40,27 +40,7 @@ El alcance del proyecto se centra en la gestión básica de la información de u
 
 Los siguientes términos describen los principales conceptos del dominio del problema. Se presentan ordenados alfabéticamente.
 
-**Cita:** Reserva de una fecha y hora para que un paciente pueda ser atendido por un médico. Incluye información sobre su estado, el motivo y las observaciones correspondientes.
-
-**Consulta:** Atención médica realizada a un paciente. Registra la fecha y hora, el diagnóstico y las observaciones relacionadas con la atención.
-
-**Departamento:** Unidad organizativa de la clínica que permite agrupar a los empleados según la estructura de la organización.
-
-**Diagnóstico:** Información que describe una enfermedad, alteración o condición identificada durante la atención médica. Puede incluir una fecha y observaciones.
-
-**Empleado:** Persona que trabaja para la clínica. Se registran datos relacionados con su incorporación, salario y estado laboral.
-
-**Estado de cita:** Situación en la que se encuentra una cita. Puede ser pendiente, confirmada o cancelada.
-
 **Forma farmacéutica:** Forma en la que se presenta un medicamento para su administración, como comprimido, cápsula, jarabe o inyectable.
-
-**Medicamento:** Producto farmacéutico identificado mediante un nombre y caracterizado por su dosis, forma farmacéutica y precio.
-
-**Médico:** Profesional sanitario que trabaja en la clínica y que se caracteriza por su especialidad, número de colegiado y turno.
-
-**Paciente:** Persona que recibe atención médica en la clínica. Dispone de un número de historia clínica y puede tener información específica sobre alergias, observaciones y necesidades de habitación.
-
-**Persona:** Individuo cuyos datos personales son almacenados por el sistema. Puede estar relacionado con la actividad de la clínica como paciente o como empleado.
 
 ---
 
@@ -356,45 +336,21 @@ Como usuario autorizado quiero almacenar la información de los medicamentos par
 
 ## 4.1.2. Reglas de negocio
 
-### R.N.01. DNI único
-
-No podrán existir dos personas diferentes con el mismo DNI. El sistema deberá garantizar la unicidad de este dato.
-
-### R.N.02. Identificación del paciente
-
-Cada paciente deberá corresponder a una única persona. La información general de la persona se almacenará en `Persona`, mientras que los datos específicos de la atención como paciente se almacenarán en `Paciente`.
-
-### R.N.03. Pertenencia a un departamento
-
-Cada empleado deberá pertenecer a un único departamento de la clínica. Un departamento podrá tener varios empleados.
-
-### R.N.04. Médico como empleado
-
-Todo médico registrado en el sistema deberá corresponder a un empleado de la clínica. Los datos laborales generales se almacenarán en `Empleado`, mientras que la información específica del profesional sanitario se almacenará en `Medico`.
-
-### R.N.05. Asignación de citas
-
-Toda cita deberá tener asignado un paciente y un médico. No se podrán registrar citas sin identificar a ambos.
-
 ### R.N.06. Conflicto de citas
 
 Un médico no podrá tener dos citas distintas en la misma fecha y hora.
+
+### R.N.06. Cancelación de citas
+
+Una cita no podrá ser cancelada en un plazo anterior a 24 horas de la cita asignada.
 
 ### R.N.07. Consulta asociada a una cita
 
 Toda consulta registrada deberá estar asociada a una única cita. Además, se deberá poder identificar al médico responsable de su realización.
 
-### R.N.08. Valores permitidos para medicamentos
-
-La forma farmacéutica de un medicamento solo podrá tomar uno de los valores definidos por el enumerado `FormaFarmaceutica`.
-
 ### R.N.09. Estado de las citas
 
 El estado de una cita solo podrá tomar uno de los valores definidos por el enumerado `EstadoCita`: `PENDIENTE`, `CONFIRMADA` o `CANCELADA`.
-
-### R.N.10. Identificación de entidades
-
-Cada entidad del sistema deberá disponer de su correspondiente identificador, que permitirá distinguir sus registros y establecer las asociaciones necesarias entre ellos.
 
 ---
 
@@ -440,7 +396,7 @@ Como responsable de la clínica quiero que el acceso al sistema y a la informaci
 - Los usuarios sin permisos suficientes no deberán poder consultar ni modificar información médica restringida.
 - El sistema deberá impedir el acceso a las funcionalidades protegidas cuando no exista una sesión autenticada válida.
 
-### R.N.F.02. Fiabilidad e integridad de los datos
+### R.N.F.02. Fiabilidad
 
 Como responsable de la clínica quiero que el sistema mantenga la integridad y coherencia de la información para evitar duplicidades, referencias incorrectas y datos incompatibles con las reglas establecidas.
 
@@ -454,7 +410,7 @@ Como responsable de la clínica quiero que el sistema mantenga la integridad y c
 - Los atributos definidos mediante tipos enumerados deberán admitir exclusivamente los valores establecidos en sus respectivas enumeraciones.
 - El sistema deberá rechazar las operaciones que incumplan las restricciones de integridad definidas, informando del error producido.
 
-### R.N.F.03. Capacidad de interacción y usabilidad
+### R.N.F.03. Capacidad de interacción
 
 Como usuario de la clínica quiero que la interfaz permita realizar las operaciones habituales de forma comprensible y sencilla para gestionar la información con eficiencia y reducir los errores de uso.
 
