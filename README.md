@@ -427,46 +427,60 @@ Las historias de usuario se agrupan en tres épicas relacionadas con las princip
 
 ## 4.3. Requisitos no funcionales
 
-### R.N.F.01. Seguridad y control de acceso
+### R.N.F.01. Seguridad
 
-Como responsable de la clínica quiero que el acceso al sistema esté controlado para proteger la información personal y médica.
+Como responsable de la clínica quiero que el acceso al sistema y a la información médica esté restringido según los permisos de cada usuario para proteger la confidencialidad de los datos de pacientes y empleados.
 
-**Prueba de aceptación**
+**Característica ISO/IEC 25010:** Seguridad.
 
-- El sistema deberá permitir el acceso únicamente a usuarios autorizados.
-- Las operaciones disponibles deberán adecuarse a las funciones del usuario.
-- La información médica no deberá estar disponible para usuarios que no tengan autorización para consultarla.
+**Pruebas de aceptación**
 
-### R.N.F.02. Integridad de la información
+- El sistema deberá permitir el acceso únicamente a usuarios autenticados y autorizados.
+- Las operaciones disponibles deberán corresponderse con los permisos asignados a cada usuario.
+- Los usuarios sin permisos suficientes no deberán poder consultar ni modificar información médica restringida.
+- El sistema deberá impedir el acceso a las funcionalidades protegidas cuando no exista una sesión autenticada válida.
 
-Como responsable de la clínica quiero que el sistema mantenga la coherencia de los datos para evitar registros duplicados o relaciones incorrectas.
+### R.N.F.02. Fiabilidad e integridad de los datos
 
-**Prueba de aceptación**
+Como responsable de la clínica quiero que el sistema mantenga la integridad y coherencia de la información para evitar duplicidades, referencias incorrectas y datos incompatibles con las reglas establecidas.
 
-- Los identificadores deberán permitir distinguir los registros.
-- Se deberá impedir la duplicidad de DNI.
-- Las asociaciones entre entidades deberán mantener la integridad de la información.
-- Los valores de los atributos enumerados deberán respetar los valores definidos en sus tipos.
+**Característica ISO/IEC 25010:** Fiabilidad, concretamente tolerancia a fallos y capacidad de recuperación cuando sean aplicables, junto con la integridad de los datos como propiedad de calidad de la información.
 
-### R.N.F.03. Usabilidad
+**Pruebas de aceptación**
 
-Como usuario del sistema quiero que las operaciones habituales sean sencillas de realizar para gestionar la información de la clínica de manera eficiente.
+- Cada registro deberá disponer de un identificador único que permita distinguirlo del resto.
+- El sistema deberá impedir la existencia de dos personas con el mismo DNI.
+- Las relaciones entre las entidades del sistema deberán respetar las restricciones de integridad referencial definidas.
+- Los atributos definidos mediante tipos enumerados deberán admitir exclusivamente los valores establecidos en sus respectivas enumeraciones.
+- El sistema deberá rechazar las operaciones que incumplan las restricciones de integridad definidas, informando del error producido.
 
-**Prueba de aceptación**
+### R.N.F.03. Capacidad de interacción y usabilidad
 
-- Las operaciones de consulta y modificación deberán ser comprensibles.
-- Los datos deberán presentarse de manera organizada.
-- Los errores de introducción de datos deberán comunicarse de forma clara.
+Como usuario de la clínica quiero que la interfaz permita realizar las operaciones habituales de forma comprensible y sencilla para gestionar la información con eficiencia y reducir los errores de uso.
+
+**Característica ISO/IEC 25010:** Capacidad de interacción (*Interaction capability*), incluyendo la facilidad de aprendizaje, la operabilidad y la protección frente a errores de uso, según corresponda.
+
+**Pruebas de aceptación**
+
+- Las funcionalidades de consulta, alta y modificación de información deberán presentarse de forma clara y diferenciada.
+- Los campos de entrada deberán identificarse mediante etiquetas comprensibles para el usuario.
+- Cuando se introduzcan datos inválidos, el sistema deberá indicar el error y permitir su corrección.
+- La información consultada deberá mostrarse organizada y con una estructura coherente en las distintas funcionalidades.
+- Las operaciones habituales deberán poder realizarse sin necesidad de conocer detalles técnicos de la implementación.
 
 ### R.N.F.04. Mantenibilidad
 
-Como responsable del sistema quiero que su estructura facilite las modificaciones futuras para poder adaptar la aplicación a nuevas necesidades de la clínica.
+Como responsable del sistema quiero que el software tenga una estructura organizada y comprensible para facilitar su corrección, adaptación y ampliación ante futuras necesidades de la clínica.
 
-**Prueba de aceptación**
+**Característica ISO/IEC 25010:** Mantenibilidad, incluyendo modularidad, analizabilidad, modificabilidad y capacidad de prueba.
 
-- La información deberá organizarse de acuerdo con las entidades definidas en el modelo conceptual.
-- Los cambios deberán poder realizarse sin introducir duplicidades innecesarias.
-- Las reglas de negocio deberán estar documentadas.
+**Pruebas de aceptación**
+
+- El código deberá organizarse en módulos o componentes con responsabilidades diferenciadas.
+- La estructura del software deberá mantener una correspondencia coherente con las entidades y responsabilidades definidas en el modelo conceptual.
+- Las modificaciones de una funcionalidad deberán minimizar los cambios innecesarios en otras funcionalidades.
+- Las principales reglas de negocio y restricciones de integridad deberán estar documentadas.
+- Las funcionalidades deberán poder verificarse mediante pruebas que permitan detectar errores introducidos por modificaciones.
 
 ---
 
